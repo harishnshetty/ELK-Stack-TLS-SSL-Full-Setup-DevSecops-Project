@@ -48,7 +48,21 @@
 # Elk-Server Setup [4 CPU, 8 GB RAM, 29 GB Minimum] c5.xlarge
 
 - Set Private IP: 10.75.1.100
+---
 
+## 🧩 **Elasticsearch**
+
+> **Purpose:** Distributed search, analytics, and data storage engine
+
+Elasticsearch is the **core component** of the ELK Stack. It stores, indexes, and analyzes large volumes of data in near real-time. Whether it’s logs, metrics, or application data collected by Beats or Logstash, Elasticsearch enables fast full-text search, aggregations, and data visualization through Kibana.
+
+* **Type:** NoSQL distributed document database
+* **Data Format:** JSON-based documents
+* **Supports:** Full-text search, structured queries, and aggregations
+* **Input Sources:** Filebeat, Metricbeat, Heartbeat, Packetbeat, Auditbeat, Logstash
+* **Output Tools:** Kibana dashboards, API queries, alerts
+
+---
 ```bash
 sudo su -
 hostnamectl set-hostname ELK-SERVER
@@ -115,6 +129,19 @@ tail -f /var/log/elasticsearch/elasticsearch.log
 
 ## Installation step of Kibana
 
+---
+
+## 📊 **Kibana**
+
+> **Purpose:** Visualization, exploration, and management UI for Elasticsearch data
+
+Kibana is the **frontend** of the Elastic Stack — a powerful analytics and visualization tool that allows you to explore, analyze, and monitor data stored in **Elasticsearch**. It provides dashboards, charts, and real-time visualizations to turn raw log and metric data into actionable insights.
+
+* **Type:** Web-based visualization and analytics tool
+* **Data Source:** Elasticsearch indices
+* **Supports:** Dashboards, saved searches, alerts, and machine learning insights
+* **Integrates With:** Filebeat, Metricbeat, Heartbeat, Packetbeat, Auditbeat, Logstash
+
 ```bash
 apt install kibana -y
 cp /etc/kibana/kibana.yml /etc/kibana/kibana_backup.yml
@@ -156,6 +183,20 @@ ss -altnp | grep 5601
 
 ---
 
+# Logstash Installation
+
+## 🔄 **Logstash**
+
+> **Purpose:** Data collection, transformation, and forwarding pipeline
+
+Logstash is a **data processing pipeline** that ingests data from multiple sources, transforms it, and then sends it to **Elasticsearch** (or other outputs). It acts as the bridge between Beats (or other data sources) and Elasticsearch, enabling filtering, parsing, and enrichment of logs and metrics.
+
+* **Type:** Data processing and ETL (Extract, Transform, Load) tool
+* **Input Sources:** Filebeat, Metricbeat, Heartbeat, Packetbeat, Auditbeat, or any other logs/metrics
+* **Processing:** Filtering, parsing, enriching, and formatting data
+* **Output Destinations:** Elasticsearch, Kafka, files, or other sinks
+---
+
 ```bash
 apt install logstash -y
 
@@ -173,7 +214,21 @@ tail -f /var/log/logstash/logstash-plain.log
 
 ss -altnp | grep 5044
 ```
+---
+## 🪵 **Filebeat** Installation
 
+> **Purpose:** Lightweight log shipper for collecting and forwarding log data
+
+Filebeat is a **lightweight agent** installed on servers to **collect logs** from different sources and forward them to **Elasticsearch** or **Logstash**. It’s designed to be efficient, with minimal resource usage, and supports a wide range of log types and modules.
+
+* **Type:** Log shipper / forwarder
+* **Input Sources:** Application logs, system logs, Nginx, Docker logs, or custom log files
+* **Outputs:** Elasticsearch, Logstash, or other supported outputs
+* **Modules:** Predefined configurations for common apps like Nginx, Apache, MySQL, System, and Docker
+
+---
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/filebeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+---
 ```bash
 apt install filebeat -y
 cp /etc/filebeat/filebeat.yml /etc/filebeat/filebeat_backup.yml
@@ -221,7 +276,7 @@ cat /etc/filebeat/modules.d/system.yml
 sed -i '/enabled:/s/false/true/' /etc/filebeat/modules.d/system.yml
 nano /etc/filebeat/modules.d/system.yml
 
-var.paths: ["/path/to/log1","/path/to/log2","/path/to/logN","/var/log/*.log","/var/log/syslog" ]
+# var.paths: ["/path/to/log1","/path/to/log2","/path/to/logN","/var/log/*.log","/var/log/syslog" ]
 
 filebeat setup -e
 
@@ -249,6 +304,18 @@ ss -altnp | grep -E "9200|9300|5601"
 # Client-Ubuntu Setup T2.Micro
 
 - Set Private IP: 10.75.1.10
+
+### 🪵 **Filebeat**
+
+> **Purpose:** Log collection and forwarding
+
+Filebeat is a lightweight shipper that collects and centralizes log data from different sources. It monitors application, system, Nginx, or Docker logs, then forwards them securely to Elasticsearch or Logstash.
+
+* Collects: Application, system, Nginx, Docker, or custom logs
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Centralized logging and troubleshooting
+
+---
 
 ```bash
 sudo su -
@@ -322,7 +389,7 @@ systemctl status filebeat
 
 ---
 
-# Inside the main Elk-Server
+# Inside the main Elk-Server Configure Logstash Filtering
 
 ```bash
 nano /etc/logstash/conf.d/filebeat-client-ubuntu.conf
@@ -383,7 +450,7 @@ systemctl status logstash
 ss -tulnp | grep 5044
 ```
 
-# In the Client-Ubuntu Machine
+# In the Client-Ubuntu Machine FileBeat Installtion
 
 ```bash
 filebeat setup -e
@@ -398,6 +465,18 @@ filebeat setup --dashboards -E setup.kibana.host="ELK-SERVER:5601" -e -->
 # Client-Amazon Setup T2.Micro
 
 - Set Private IP: 10.75.1.11
+
+### 🪵 **Filebeat**
+
+> **Purpose:** Log collection and forwarding
+
+Filebeat is a lightweight shipper that collects and centralizes log data from different sources. It monitors application, system, Nginx, or Docker logs, then forwards them securely to Elasticsearch or Logstash.
+
+* Collects: Application, system, Nginx, Docker, or custom logs
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Centralized logging and troubleshooting
+
+---
 
 ```bash
 sudo su -
@@ -519,11 +598,24 @@ ufw allow 5400
 -->
 
 ## Check in the Discover
-
--------------------
+---
 
 ## install heartbeat inside the ELK-Server
 
+
+### 💓 **Heartbeat**
+
+> **Purpose:** Uptime and availability monitoring
+
+Heartbeat pings websites, APIs, or network hosts to verify uptime and response time. It logs status changes, response latency, and errors to help track service availability and reliability.
+
+* Checks: HTTP, TCP, ICMP endpoints
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Uptime monitoring and SLA reporting
+
+---
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/heartbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+---
 ```bash
 sudo su -
 apt install heartbeat-elastic
@@ -579,9 +671,22 @@ sudo systemctl start heartbeat-elastic
 sudo systemctl status heartbeat-elastic
 sudo tail -f /var/log/heartbeat/heartbeat.log
 ```
-
+---
 ## install metricbeat inside the ELK-Server
 
+### 📈 **Metricbeat**
+
+> **Purpose:** System and service metrics collection
+
+Metricbeat gathers metrics from your OS and services such as CPU, memory, disk usage, and network stats. It can also monitor services like **MySQL**, **Docker**, **Nginx**, and **Kubernetes** to track performance and resource usage.
+
+* Collects: CPU, memory, disk, Docker, MySQL, K8s metrics
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Infrastructure performance monitoring and alerting
+
+---
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/metricbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+---
 ```bash
 sudo su -
 apt install metricbeat
@@ -622,8 +727,24 @@ sudo systemctl enable metricbeat.service
 sudo systemctl start metricbeat.service
 sudo systemctl status metricbeat.service
 ```
+---
 
 ## install Packetbeat inside the ELK-Server
+
+
+### 🔍 **Packetbeat**
+
+> **Purpose:** Network traffic analysis
+
+Packetbeat analyzes network packets in real-time and decodes application-level protocols like **HTTP**, **DNS**, **MySQL**, and **TLS**. It helps visualize request/response times, latency, and detect anomalies in network communication.
+
+* Captures: Network packets and protocol data
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Network monitoring and performance diagnostics
+
+---
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/packetbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+---
 
 ```bash
 sudo su -
@@ -651,6 +772,23 @@ sudo systemctl status packetbeat
 ```
 
 ## install Auditbeat inside the ELK-Server
+
+
+
+### 🛡️ **Auditbeat**
+
+> **Purpose:** Security and file integrity auditing
+
+Auditbeat monitors system activity for security and compliance. It tracks file modifications, user logins, sudo access, and permission changes to detect suspicious behavior or policy violations.
+
+* Tracks: File integrity, login activity, process auditing
+* Outputs: Elasticsearch / Logstash
+* **Use case:** Security auditing, compliance, and intrusion detection
+
+---
+
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/auditbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+---
 
 ```bash
 sudo su -
@@ -682,3 +820,9 @@ sudo systemctl status auditbeat
 - EC2
 - VPC
 - SG
+
+
+## For more projects, check out  
+[https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
+## Explore New Videos By Click the Image
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/6135e01f68ebd6c691f8fc2304cfcb6d1e867dd6/ecr3.jpg)](https://www.youtube.com/@devopsHarishNShetty)
