@@ -824,5 +824,5 @@ sudo systemctl status auditbeat
 
 ## For more projects, check out  
 [https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
-## Explore New Videos By Click the Image
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/6135e01f68ebd6c691f8fc2304cfcb6d1e867dd6/ecr3.jpg)](https://www.youtube.com/@devopsHarishNShetty)
+<!-- ## Explore New Videos By Click the Image
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/6135e01f68ebd6c691f8fc2304cfcb6d1e867dd6/ecr3.jpg)](https://www.youtube.com/@devopsHarishNShetty) -->
