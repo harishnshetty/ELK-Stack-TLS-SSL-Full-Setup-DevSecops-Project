@@ -1,4 +1,4 @@
-# How to setup ELK Stack (Elasticsearch, Logstash, Kibana, HeartBeat, FileBeat, PacketBeat, AuditBeat, MetricBeat) on a single VM (ELK-SERVER) and configure Filebeat to ship logs to Logstash.
+# How to setup ELK Stack 9.X in Linux (Elasticsearch, Logstash, Kibana, HeartBeat, FileBeat, PacketBeat, AuditBeat, MetricBeat) on a single VM (ELK-SERVER) and configure Filebeat to ship logs to Logstash.
 
 [https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
 
