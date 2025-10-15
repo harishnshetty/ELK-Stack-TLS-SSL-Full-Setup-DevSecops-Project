@@ -2,7 +2,7 @@
 
 [https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
 
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f531e97b49cbc61f8997610e3de92bb3bcaf7c9c/ELk.jpg)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f531e97b49cbc61f8997610e3de92bb3bcaf7c9c/ELk.jpg)](https://youtu.be/G6xeBhUgGBo)
 
 | **Beat Name**                                   | **Purpose / What It Collects**        | **Example Use Case**                                     |
 |-------------------------------------------------|---------------------------------------|----------------------------------------------------------|
@@ -227,7 +227,7 @@ Filebeat is a **lightweight agent** installed on servers to **collect logs** fro
 * **Modules:** Predefined configurations for common apps like Nginx, Apache, MySQL, System, and Docker
 
 ---
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/filebeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/filebeat.JPG)](https://youtu.be/G6xeBhUgGBo)
 ---
 ```bash
 apt install filebeat -y
@@ -614,7 +614,7 @@ Heartbeat pings websites, APIs, or network hosts to verify uptime and response t
 * **Use case:** Uptime monitoring and SLA reporting
 
 ---
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/heartbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/heartbeat.JPG)](https://youtu.be/G6xeBhUgGBo)
 ---
 ```bash
 sudo su -
@@ -685,7 +685,7 @@ Metricbeat gathers metrics from your OS and services such as CPU, memory, disk u
 * **Use case:** Infrastructure performance monitoring and alerting
 
 ---
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/metricbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/metricbeat.JPG)](https://youtu.be/G6xeBhUgGBo)
 ---
 ```bash
 sudo su -
@@ -743,7 +743,7 @@ Packetbeat analyzes network packets in real-time and decodes application-level p
 * **Use case:** Network monitoring and performance diagnostics
 
 ---
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/packetbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/packetbeat.JPG)](https://youtu.be/G6xeBhUgGBo)
 ---
 
 ```bash
@@ -787,7 +787,7 @@ Auditbeat monitors system activity for security and compliance. It tracks file m
 
 ---
 
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/auditbeat.JPG)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/1e88df558de6aaa7698e904e06fdb94286e3882d/auditbeat.JPG)](https://youtu.be/G6xeBhUgGBo)
 ---
 
 ```bash
