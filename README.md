@@ -2,7 +2,7 @@
 
 [https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
 
-[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/966666d51a2d0edc8c7093294d2db6b03005273e/ELk.jpg)](https://youtu.be/KwKtMHBQXk4)
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f531e97b49cbc61f8997610e3de92bb3bcaf7c9c/ELk.jpg)](https://youtu.be/KwKtMHBQXk4)
 
 | **Beat Name**                                   | **Purpose / What It Collects**        | **Example Use Case**                                     |
 |-------------------------------------------------|---------------------------------------|----------------------------------------------------------|
